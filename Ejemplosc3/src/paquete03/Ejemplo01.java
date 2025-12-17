@@ -16,14 +16,15 @@ public class Ejemplo01 {
                             {10, 5, 7, 9}, 
                             {7, 9.4, 10, 9}};
         String[] nombresEstudiante = {"Jose A", "Elena J", "Paúl L"};
-        double[] sumaNotas = new double[3];
-        double[] sumaNotasCualitativas = new double[3];
+        double [] sumaNotas = new double[3];
+        String[] promedioNotasCualitativas = new String[3];
         // 0 - 5.9 Bueno
         // 6 - 8.9 Muy Bueno
         // 9 - 10 Sobresaliente
                     
         double suma;
         String reporte = "";
+        double promedio;
         
         for (int i = 0; i < notas.length; i++) { // 0<3
             suma = 0; // 0
@@ -36,14 +37,29 @@ public class Ejemplo01 {
                      // 26 + notas[0][3] // 26 + 8 // 34
             }
             sumaNotas[i] = suma; // 
+            promedio = suma / 4;
+            if (promedio >0 && promedio <= 5.9){
+                promedioNotasCualitativas[i] = "bueno";
+            }else{
+                if(promedio >=6 && promedio <= 8.9){
+                    promedioNotasCualitativas[i] = "Muy bueno";
+                }else{
+                    if (promedio >9 && promedio<=10){
+                        promedioNotasCualitativas [i] = "Sobresaliente";
+                    }else{
+                        promedioNotasCualitativas[i] = "Fuera de rango";
+                    }
+                }
+            }
         }
         // Presentación de resultados
         for (int i = 0; i < nombresEstudiante.length; i++) {
             reporte = String.format("%sEstudiante %s tiene una sumataria "
-                    + "de notas: %.3f\n",
+                    + "de notas: %.3f y su promedio es: (%s)\n ",
                     reporte,
                     nombresEstudiante[i],
-                    sumaNotas[i]);
+                    sumaNotas[i]), promedio[i],
+                    promedioNotasCualitativas);
         }
         
         System.out.printf("%s\n", reporte);
